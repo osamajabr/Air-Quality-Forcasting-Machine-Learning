@@ -82,5 +82,3 @@ The forecast plot suggests the model captures seasonal patterns well, although a
 - **Trend**: Shows the overall increase or decrease in relative humidity over the period.
 - **Weekly**: Reveals higher relative humidity mid-week and lower towards the weekends.
 - **Daily**: Indicates peak relative humidity in the early morning hours, decreasing towards midday.
-
-These components help understand how different timescales contribute to changes in relative humidity, providing insights into daily and weekly environmental dynamics.

@@ -36,6 +36,32 @@ Key preprocessing steps include:
 - Exclusion of all rows where every data point is missing.
 - Conversion of the '-200' placeholder values used for missing data into NaNs. These are filled with the column mean to ensure the integrity of the dataset for robust analysis and forecasting.
 
+
+## Model Description
+
+The air quality forecasting model utilises the FB Prophet algorithm, a procedure well-suited for forecasting time series data that exhibits seasonal variations. Prophet is particularly effective due to its decomposable model framework, which includes trend, seasonality, and holidays, making it adaptable to various time series complexities with strong seasonal effects.
+
+### Modelling Process
+
+1. **Data Preparation**: The model begins with data preparation where the target variable 'Relative Humidity' is isolated in the 'y' column, and the corresponding timestamps are prepared in the 'ds' column. This structured data is essential for fitting the model.
+
+2. **Model Fitting**: 
+   - **Initialisation**: A Prophet model instance is created. 
+   - **Fitting**: The model is then fitted to the data, where it learns from the historical patterns of relative humidity.
+   - **Parameters**: During the fitting process, Prophet automatically handles any internal settings that dictate trend changes and seasonality detection.
+
+3. **Making Future Predictions**:
+   - **Future DataFrame Creation**: After training, a future dataframe is created extending 365 hours into the future, indicating the timestamps for which predictions are needed.
+   - **Prediction Generation**: Prophet uses the fitted model to forecast relative humidity for each timestamp in the future dataframe.
+   - **Output**: The predictions include not only the forecasted values (`yhat`) but also the uncertainty intervals (`yhat_lower`, `yhat_upper`), which provide a range of expected values.
+
+4. **Components Breakdown**:
+   - After forecasting, the model’s `plot_components` method is invoked to visualise the trend, daily and weekly seasonality. This breakdown helps in understanding which factors (time of day, day of the week) are most influential in predicting relative humidity.
+
+### Visualisation of Forecast
+- The `plot` function of Prophet is used to draw the forecast along with the historical data, giving a clear visual representation of how well the model predicts future values. This plot helps in quickly identifying any discrepancies between the predicted and actual values and understanding the model’s performance over time.
+
+
 ## Model Results and Graph Explanations
 
 ### Forecast Plot
